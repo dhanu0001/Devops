@@ -1,5 +1,5 @@
 ---
-- hosts: tomcatservers
+- hosts: all
   become: yes
   gather_facts: False
   tasks:
@@ -15,8 +15,8 @@
     yum: name=tomcat state=present
 
 
-  - name: Download latest VProfile.war file
-    get_url: url=http://{{nexusip}}:8081/nexus/content/repositories/VProfile-repo/{{groupid}}/{{time}}/{{build}}/{{vprofile_version}} dest=/tmp/ mode=755
+  #- name: Download latest VProfile.war file
+   # get_url: url=http://{{nexusip}}:8081/nexus/content/repositories/VProfile-repo/{{groupid}}/{{time}}/{{build}}/{{vprofile_version}} dest=/tmp/ mode=755
 
   - name: Stop tomcat service
     service: name=tomcat state=stopped
