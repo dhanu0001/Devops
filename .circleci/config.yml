@@ -39,7 +39,3 @@ jobs:
 
       # run tests!
       - run: mvn integration-test
-      - run:
-          name: Push to Artifactory
-          command: |
-            ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USER --apikey $ARTIFACTORY_APIKEY --interactive=false
