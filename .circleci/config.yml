@@ -1,18 +1,18 @@
-# Java Maven CircleCI 2.0 configuration file
+# Java Maven CircleCI 2.1 configuration file
 #
-# Check https://circleci.com/docs/2.0/language-java/ for more details
+# Check https://circleci.com/docs/2.1/language-java/ for more details
 #
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/openjdk:11-jdk
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      # image: circleci/postgres:9.4
 
     working_directory: ~/repo
 
@@ -39,3 +39,6 @@ jobs:
 
       # run tests!
       - run: mvn integration-test
+      - run:
+          name: Install JFrog CLI
+          command: curl -fL https://getcli.jfrog.io | sh
